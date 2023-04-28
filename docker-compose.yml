@@ -1,0 +1,47 @@
+version: '3.9'
+
+volumes:
+  mysql-data-consulta-cep:
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  mysql-consulta-cep:
+    image: mysql:latest
+    container_name: mysql-consulta-cep
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - mysql-data-consulta-cep:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - app-network
+  
+  consulta-cep:
+    build: .
+    command: npm run dev
+    container_name: consulta-cep
+    env_file:
+      - .env
+    volumes:
+      - .:/home/consulta-cep
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql-consulta-cep
+    environment:
+      DB_HOST: mysql-consulta-cep
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_DATABASE: ${MYSQL_DATABASE}
+    networks:
+      - app-network

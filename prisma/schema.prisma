@@ -1,0 +1,19 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model zip_code {
+  id           Int       @id @default(autoincrement())
+  zip_code     String    @db.VarChar(255)
+  status_code  Int
+  api_response Json
+  created      DateTime  @default(now()) @db.DateTime(0)
+  modified     DateTime? @db.DateTime(0)
+  deleted      DateTime? @db.DateTime(0)
+}
