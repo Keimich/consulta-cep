@@ -1,4 +1,6 @@
 .env
 .env.prod
 .next
+docker-compose.prod.yml
 node_modules
+next.config.js

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Navbar } from "../components/Navbar";
 import { ZipCodeInput } from "../components/ZipCodeInput";
 import { NumberQueries } from "../components/NumberQueries";
