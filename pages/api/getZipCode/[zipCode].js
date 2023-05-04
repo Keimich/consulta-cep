@@ -9,7 +9,7 @@ export default async function getZipCode(req, res) {
 
   let zipCodeData = await prisma.zip_code.findFirst({
     select: {
-      api_response: true,
+      zip_code_data: true,
     },
     where: {
       zip_code: zipCode,
@@ -21,7 +21,16 @@ export default async function getZipCode(req, res) {
     take: 1,
   });
 
-  const json = JSON.parse(zipCodeData.api_response);
+  if (!zipCodeData) {
+    const errorMsg = {
+      error: {
+        code: "not_found",
+        message: "zip code not found",
+      },
+    };
+    res.status(404).json(errorMsg);
+  }
 
+  const json = zipCodeData.zip_code_data;
   res.status(200).json(json);
 }

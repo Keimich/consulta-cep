@@ -1,10 +1,10 @@
 import { React } from "react";
 
 export function ResultCard({ data }) {
-  if (data.data) {
-    const zipCodeData = data.data;
+  if (data) {
+    const zipCodeData = data;
 
-    if (zipCodeData.erro) {
+    if (zipCodeData.error) {
       return (
         <div className="bg-gray-800 flex flex-col rounded-2xl px-4 py-4 gap-4 text-center">
           <h1 className="text-white">CEP inválido!</h1>
@@ -17,6 +17,7 @@ export function ResultCard({ data }) {
         </div>
       );
     }
+
     return (
       <div className="bg-gray-800 flex flex-col rounded-2xl px-4 py-4 gap-4">
         <div className="bg-gray-700 rounded-2xl px-4 py-4 gap-4 text-gray-300">

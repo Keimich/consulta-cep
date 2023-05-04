@@ -21,22 +21,18 @@ export function ZipCodeInput() {
         const response = await axios.get(
           `https://viacep.com.br/ws/${zipCode}/json/`
         );
-        if (response.status == 200) {
-          async function saveZipCode(zipCode, statusCode, apiResponse) {
-            const res = await fetch("/api/saveZipCode", {
-              method: "POST",
-              body: JSON.stringify({
-                zipCode: zipCode,
-                statusCode: statusCode,
-                apiResponse: apiResponse,
-              }),
-              headers: { "Content-Type": "application/json" },
-            });
-          }
-          saveZipCode(zipCode, response.status, response);
-          const uri = `/${zipCode}`
-          router.push(uri);
+
+        async function saveZipCode(apiResponse) {
+          const res = await fetch("/api/saveZipCode", {
+            method: "POST",
+            body: JSON.stringify(apiResponse),
+            headers: { "Content-Type": "application/json" },
+          });
         }
+
+        saveZipCode(response);
+        const uri = `/${zipCode}`;
+        router.push(uri);
       } catch (error) {
         alert(error);
         console.log(error);

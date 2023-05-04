@@ -9,11 +9,12 @@ datasource db {
 }
 
 model zip_code {
-  id           Int       @id @default(autoincrement())
-  zip_code     String    @db.VarChar(255)
-  status_code  Int
-  api_response Json
-  created      DateTime  @default(now()) @db.DateTime(0)
-  modified     DateTime? @db.DateTime(0)
-  deleted      DateTime? @db.DateTime(0)
+  id            Int       @id @default(autoincrement())
+  zip_code      String    @db.VarChar(255)
+  zip_code_data Json?
+  status_code   Int
+  api_response  Json
+  created       DateTime  @default(now()) @db.DateTime(0)
+  modified      DateTime? @db.DateTime(0)
+  deleted       DateTime? @db.DateTime(0)
 }

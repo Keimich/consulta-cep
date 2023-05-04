@@ -1,5 +1,5 @@
 # Imagem base Node.js
-FROM node:16-alpine
+FROM node:16
 
 # Diretório de trabalho
 WORKDIR /home/consulta-cep
@@ -8,16 +8,13 @@ WORKDIR /home/consulta-cep
 COPY package*.json ./
 
 # Instalar as dependências
-RUN npm install --production
+RUN npm install
 
 # Copiar todo o código fonte para o container
 COPY . .
-
-# build the app
-RUN npm run build
 
 # Expor a porta 3000 para acesso externo
 EXPOSE 3000
 
 # Comando a ser executado ao iniciar o container
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
