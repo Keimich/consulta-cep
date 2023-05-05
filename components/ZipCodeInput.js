@@ -15,20 +15,20 @@ export function ZipCodeInput() {
     setZipCode(formattedZipCode);
   }
 
+  async function saveZipCode(apiResponse) {
+    await fetch("/api/saveZipCode", {
+      method: "POST",
+      body: JSON.stringify(apiResponse),
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   const handleSearchZipCode = async (event) => {
     if (event.key === "Enter") {
       try {
         const response = await axios.get(
           `https://viacep.com.br/ws/${zipCode}/json/`
         );
-
-        async function saveZipCode(apiResponse) {
-          const res = await fetch("/api/saveZipCode", {
-            method: "POST",
-            body: JSON.stringify(apiResponse),
-            headers: { "Content-Type": "application/json" },
-          });
-        }
 
         saveZipCode(response);
         const uri = `/${zipCode}`;

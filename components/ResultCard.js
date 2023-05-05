@@ -1,4 +1,9 @@
 import { React } from "react";
+import PropTypes from 'prop-types';
+
+ResultCard.propTypes = {
+  data: PropTypes.any
+};
 
 export function ResultCard({ data }) {
   if (data) {
