@@ -29,8 +29,7 @@ export default async function getZipCode(req, res) {
       },
     };
     res.status(404).json(errorMsg);
+  } else {
+    res.status(200).json(zipCodeData.zip_code_data);
   }
-
-  const json = zipCodeData.zip_code_data;
-  res.status(200).json(json);
 }
