@@ -1,4 +1,3 @@
-import prisma from "../../prisma/mysql-consulta-cep";
 import { getNumberQueries } from "../../lib/getNumberQueries";
 
 export default async function handler(req, res) {

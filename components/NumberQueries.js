@@ -1,4 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+NumberQueries.propTypes = {
+  data: PropTypes.any,
+};
 
 export function NumberQueries({ data }) {
 
