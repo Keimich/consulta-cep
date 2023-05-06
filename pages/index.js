@@ -21,7 +21,7 @@ export default function HomePage({ numberQueries }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const numberQueries = await getNumberQueries();
 
   return {
