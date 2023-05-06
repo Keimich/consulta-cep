@@ -1,15 +1,12 @@
 import prisma from "../../prisma/mysql-consulta-cep";
+import { getNumberQueries } from "../../lib/getNumberQueries";
 
-export default async function getNumberQueries(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Método não permitido" });
   }
 
-  let numberQueries = await prisma.zip_code.count({
-    where: {
-      status_code: 200
-    }
-  });
+  const numberQueries = await getNumberQueries();
   
   res.status(200).json(numberQueries);
 }
