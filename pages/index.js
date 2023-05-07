@@ -13,7 +13,7 @@ export default function HomePage({ numberQueries }) {
   return (
     <>
       <Navbar />
-      <div className="container flex flex-col items-center justify-center py-80 mx-auto gap-4">
+      <div className="container flex flex-col items-center justify-center py-80 mx-auto gap-4 max-md:py-52">
         <ZipCodeInput />
         <NumberQueries data={numberQueries} />
       </div>

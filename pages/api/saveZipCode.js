@@ -1,6 +1,6 @@
-import prisma from "../../prisma/mysql-consulta-cep";
+import { saveZipCode } from "../../lib/saveZipCode";
 
-export default async function saveZipCode(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método não permitido" });
   }
@@ -16,7 +16,7 @@ export default async function saveZipCode(req, res) {
     },
   };
 
-  await prisma.zip_code.create(data2save);
+  await saveZipCode(data2save);
 
   res.status(200);
 }

@@ -12,7 +12,7 @@ function ZipCodePage({ zipCodeData }) {
   return (
     <>
       <Navbar />
-      <div className="container flex items-center justify-center py-60">
+      <div className="container flex items-center justify-center py-60 max-md:py-10">
         <ResultCard data={zipCodeData} />
       </div>
     </>
