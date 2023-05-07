@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <div className="bg-gray-300 min-h-screen">
+    <div className="bg-gray-100 min-h-screen">
       <Component {...pageProps} />
     </div>
   );
